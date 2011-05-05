@@ -87,7 +87,7 @@
 	NSString *url = [NSString stringWithFormat:@"http://www.pachube.com/feeds/%@.json",feedID];
 	self.responseData = [[NSMutableData data] retain];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+	[[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
 	
 	//NSString *url = [NSString stringWithFormat:@"http://apps.pachube.com/i/%@",self.feedID];
 	
@@ -178,6 +178,8 @@
 		
 		[self.datastreamTable reloadData];
 	}
+  
+  [responseString release];
 }
 
 #pragma mark -

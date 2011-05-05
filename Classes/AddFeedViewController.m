@@ -68,7 +68,7 @@
 	
 		responseData = [[NSMutableData data] retain];
 		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-		[[NSURLConnection alloc] initWithRequest:request delegate:self];
+		[[[NSURLConnection alloc] initWithRequest:request delegate:self] autorelease];
 	} else {
 		// release AddFeedView and load FeedListView
 		AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
@@ -185,6 +185,8 @@
 		[delegate.rootViewController.view insertSubview:delegate.rootViewController.feedListViewController.view atIndex:0];
 		[delegate.rootViewController.feedListViewController viewWillAppear:YES];
 	}
+  
+  [responseString release];
 }
 
 #pragma mark -
